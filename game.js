@@ -17,7 +17,12 @@
   ];
   let x=600,y=660,cameraX=0,cameraY=0,selected=0,target=null,last=0,started=false,position=0,step=0,wasMobile=mobile(),transitionUntil=0,wheelActive=false,wheelSum=0,wheelTimer,scrollTimer,swipe=null,motion=null,anchorX=null,anchorY=null,landingRevealAt=0;
   const held=new Set(),visited=new Set();
-  const dialog=$('.g-dialog'),application=$('.g-application'),formContent=$('.g-application-content'),form=$('.g-request-form');
+  const dialog=$('.g-dialog'),application=$('.g-application'),formContent=$('.g-application-content'),form=$('.g-request-form'),how=$('.g-how-dialog');
+  const cue=document.createElement('p');cue.className='g-swipe-cue';cue.innerHTML='<span aria-hidden="true">↑</span> Свайп вверх по небу';$('.g-card-content').prepend(cue);
+  function showHow(){held.clear();how.showModal();}
+  function closeHow(){how.close();}
+  $('.g-help').addEventListener('click',showHow);
+  $('.g-how-start').addEventListener('click',closeHow);
   function setCollapsed(collapsed){
    $('.g-flight-card').classList.toggle('is-collapsed',collapsed);
    $('.g-card-toggle').textContent=collapsed?'+':'−'; $('.g-card-toggle').setAttribute('aria-expanded',String(!collapsed));
@@ -109,7 +114,7 @@
   $('.g-card-toggle').addEventListener('click',()=>setCollapsed(!$('.g-flight-card').classList.contains('is-collapsed')));
   const keyMap={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
   window.addEventListener('keydown',e=>{
-   if(dialog.open||/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName)||(mobile()&&nestedScroll(e.target)))return;
+   if(how.open||dialog.open||/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName)||(mobile()&&nestedScroll(e.target)))return;
    if(mobile()){
     if(['ArrowDown','PageDown','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();if(performance.now()>transitionUntil)goStep(step+(['ArrowDown','PageDown'].includes(e.key)?1:-1));}return;
    }
@@ -122,7 +127,7 @@
   });
   function nestedScroll(target){return target.closest('.g-application,.g-dialog')||target.closest('.g-card-content')?.scrollHeight>target.closest('.g-card-content')?.clientHeight+2;}
   window.addEventListener('wheel',e=>{
-   if(!mobile()||dialog.open||nestedScroll(e.target))return;
+   if(!mobile()||dialog.open||how.open||nestedScroll(e.target))return;
    e.preventDefault();clearTimeout(wheelTimer);wheelTimer=setTimeout(()=>{wheelActive=false;wheelSum=0;},240);
    if(wheelActive||performance.now()<transitionUntil)return;
    wheelSum+=e.deltaY;if(Math.abs(wheelSum)<25)return;
@@ -135,7 +140,7 @@
   });
   viewport.addEventListener('pointercancel',()=>swipe=null);viewport.addEventListener('lostpointercapture',()=>swipe=null);
   window.addEventListener('scroll',()=>{
-   if(!mobile()||performance.now()<transitionUntil)return;
+   if(!mobile()||how.open||performance.now()<transitionUntil)return;
    clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{const nearest=clamp(Math.round(scrollY/stepHeight()),0,4);if(nearest!==step)goStep(nearest,false);},90);
   },{passive:true});
   function paint(immediate=false){
@@ -178,7 +183,7 @@
     }
     if(landingRevealAt&&t>=landingRevealAt){shell.classList.add('is-landed');shell.classList.remove('is-landing');landingRevealAt=0;}
    }
-   else if(!dialog.open){
+   else if(!dialog.open&&!how.open){
     let dx=(held.has('right')?1:0)-(held.has('left')?1:0),dy=(held.has('down')?1:0)-(held.has('up')?1:0);
     if(dx||dy){const mag=Math.hypot(dx,dy);x+=dx/mag*270*dt;y+=dy/mag*270*dt;}
     if(target){const dx=target.x-x,dy=target.y-y,d=Math.hypot(dx,dy),travel=480*dt;if(d<travel+4){x=target.x;y=target.y;arrive(target.index);target=null;}else{x+=dx/d*travel;y+=dy/d*travel;}}
@@ -187,7 +192,7 @@
    paint();requestAnimationFrame(tick);
   }
   window.addEventListener('resize',()=>{if(mobile()!==wasMobile){wasMobile=mobile();configure();if(!mobile()){window.scrollTo({top:0,behavior:'instant'});x=desktopPoints[selected].x;y=desktopPoints[selected].y;}}paint(true);});
-  configure();select(0);paint(true);requestAnimationFrame(tick);
+  configure();select(0);paint(true);requestAnimationFrame(tick);showHow();
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

@@ -130,3 +130,45 @@ button.textlink{appearance:none;background:transparent;border:0;border-bottom:1p
 @media(max-width:1000px) and (max-height:500px){.g-landing-scene{height:85dvh}.g-landing-caption{right:45%;top:72px}.g-landing-caption strong{font-size:21px}}
 
 @media(max-width:760px),(max-width:1000px) and (max-height:500px){.g-landing-scene svg{overflow:hidden}}
+
+/* First-visit flight instructions and a repeatable help entry point. */
+.g-help{flex:none;min-height:44px;padding:8px 12px;border:1px solid #a64425;border-radius:8px;background:#f8eed9;color:#943a20;font-size:14px;font-weight:700;transition:background .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
+.g-help:hover{background:#fff9ec}.g-help:active,.g-how-start:active{transform:scale(.98)}
+.g-how-dialog{width:min(448px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:24px;background:#f9f2df;color:#182f36;box-shadow:0 24px 80px #102c3b40;overscroll-behavior:contain;touch-action:pan-y}
+.g-how-dialog::backdrop{background:#102c3bbd;backdrop-filter:blur(8px)}
+.g-how-dialog[open]{animation:g-how-enter .5s cubic-bezier(.22,1,.36,1) both}
+.g-how-visual{padding:16px 24px;background:#b74420;color:#fff7e5;text-align:center}
+.g-how-visual svg{display:block;width:100%;height:144px;margin:0 auto 8px}
+.g-how-visual .g-how-phone{display:none}
+.g-how-keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:176px;height:144px;margin:0 auto 8px;padding:8px}
+.g-how-keys kbd{display:grid;place-items:center;border:2px solid currentColor;border-radius:8px;font:inherit;font-size:30px;line-height:36px}
+.g-how-keys kbd:first-child{grid-column:2}.g-how-keys kbd:nth-child(2){grid-column:1}
+.g-how-visual>span{font-size:12px;line-height:16px;letter-spacing:1px;font-weight:700}
+.g-how-content{padding:24px 32px 32px}
+.g-how-eyebrow{margin:0 0 12px;color:#a44324;font-size:12px;line-height:16px;font-weight:700;letter-spacing:1px}
+.g-how-content h2{margin:0 0 16px;font-size:36px;line-height:40px;letter-spacing:-1px;font-weight:700;text-wrap:balance}
+.g-how-content p:not(.g-how-eyebrow){margin:0 0 16px;font-size:18px;line-height:28px;text-wrap:pretty}
+.g-how-content .g-how-goal{color:#455d60}
+.g-how-start{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;min-height:56px;padding:12px 16px;border:0;border-radius:8px;background:#b74420;color:#fff7e5;font-size:16px;font-weight:700;transition:background .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1)}
+.g-how-start:hover{background:#943a20}.g-how-start span{font-size:24px;line-height:32px}
+.g-how-mobile,.g-swipe-cue{display:none}
+.g-how-finger{animation:g-how-swipe 2.4s cubic-bezier(.22,1,.36,1) infinite;transform-origin:center}
+@keyframes g-how-swipe{0%,15%{transform:translateY(0);opacity:1}65%{transform:translateY(-40px);opacity:1}80%,100%{transform:translateY(-40px);opacity:0}}
+@keyframes g-how-enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px),(max-width:1000px) and (max-height:500px){
+ .g-header{gap:8px}.g-help{margin-left:auto;font-size:12px;padding:8px}
+ .g-how-mobile{display:inline}.g-how-desktop{display:none}
+ .g-how-visual .g-how-phone{display:block}.g-how-keys{display:none}
+ .g-swipe-cue{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:8px 12px;border-radius:8px;background:#b74420;color:#fff7e5;font-size:14px;line-height:20px;font-weight:700}
+ .g-swipe-cue>span{font-size:24px;line-height:24px}
+}
+@media(max-width:360px), (max-height:650px){
+ .g-how-content{padding:16px 24px 24px}.g-how-visual{padding:12px 24px}.g-how-visual svg{height:96px;margin-bottom:4px}
+ .g-how-content h2{font-size:30px;line-height:36px}.g-how-content p:not(.g-how-eyebrow){font-size:16px;line-height:24px;margin-bottom:12px}.g-how-eyebrow{margin-bottom:8px}
+ .g-swipe-cue{font-size:12px;line-height:16px;padding:8px;margin-bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){.g-how-dialog[open],.g-how-finger{animation:none}.g-help,.g-how-start{transition:none}}
+@media(max-width:360px){
+ .g-how-content{padding:16px}.g-how-visual{padding:8px 16px}.g-how-visual svg{height:80px}
+ .g-how-content .g-how-goal{font-size:14px;line-height:20px}
+}
