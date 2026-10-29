@@ -172,3 +172,9 @@ button.textlink{appearance:none;background:transparent;border:0;border-bottom:1p
  .g-how-content{padding:16px}.g-how-visual{padding:8px 16px}.g-how-visual svg{height:80px}
  .g-how-content .g-how-goal{font-size:14px;line-height:20px}
 }
+
+/* Both layouts share a single, undistorted aircraft drawing. */
+.g-aircraft{transform:none}
+.g-aircraft img,.g-mobile-aircraft img{display:block;width:100%;height:auto;object-fit:contain}
+.g-plane-label{top:100%;left:32px}
+.g-mobile-aircraft{aspect-ratio:640/260}

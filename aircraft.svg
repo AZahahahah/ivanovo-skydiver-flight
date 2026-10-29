@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" fill="none" role="img" aria-labelledby="title desc">
+ <title id="title">Ан-2 в боковом ракурсе</title>
+ <desc id="desc">Оранжевый биплан с радиальным двигателем, двумя крыльями, круглыми окнами и хвостовым шасси.</desc>
+ <style>
+  .prop-blades{animation:prop-turn .18s cubic-bezier(.45,0,.55,1) infinite alternate;transform-origin:0 0}
+  @keyframes prop-turn{from{transform:scaleY(1)}to{transform:scaleY(.28)}}
+  @media(prefers-reduced-motion:reduce){.prop-blades{animation:none}}
+ </style>
+ <g stroke="#203840" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+  <!-- Far undercarriage, behind the fuselage. -->
+  <path d="m159 178 44 40 44-37" stroke="#52676a"/>
+  <circle cx="204" cy="220" r="16" fill="#3d575c"/><circle cx="204" cy="220" r="5" fill="#e8d6ad" stroke="none"/>
+  <!-- The fin grows from the tapered rear fuselage. -->
+  <path d="M467 143c12-13 20-38 29-57l10-23c4-8 11-12 20-12h20l-1 94Z" fill="#cb6943"/>
+  <path d="M528 54v85" stroke="#934c37" stroke-width="2"/>
+  <!-- Cabin roof, radial-engine shoulder and tapered fuselage. -->
+  <path d="M111 120c13-4 22-12 29-24 5-8 12-13 23-13h35c9 0 16 4 23 10l23 20c84 3 171 13 267 25l48 6c9 1 15 5 15 9-16 7-45 9-73 10l-103 11-145 23H126c-15-17-20-52-15-77Z" fill="#d97750"/>
+  <!-- Livery follows the fuselage rather than bending the silhouette. -->
+  <path d="M136 156h160l204-7-99 14-112 12H136Z" fill="#f2dfb7" stroke="none"/>
+  <path d="m141 181 150 1 127-18" stroke="#be603f" stroke-width="2"/>
+  <!-- Cockpit glazing, aligned with the roof and engine cowling. -->
+  <path d="m143 113 9-17c2-3 5-5 10-5h17v25h-36Z" fill="#385d67"/>
+  <path d="M186 91h11c5 0 10 3 15 7l20 18h-46Z" fill="#385d67"/>
+  <path d="M180 91v25" stroke="#f2dfb7" stroke-width="3"/>
+  <!-- Round passenger windows and aft cabin door. -->
+  <g fill="#385d67" stroke="#f2dfb7" stroke-width="3">
+   <circle cx="271" cy="135" r="8"/><circle cx="304" cy="137" r="8"/><circle cx="337" cy="139" r="8"/><circle cx="370" cy="141" r="8"/>
+  </g>
+  <path d="m391 123 28 3v42l-28 4Z" stroke="#9e513a" stroke-width="2"/><path d="M411 151h4" stroke="#f2dfb7" stroke-width="3"/>
+  <!-- Engine cowling: a single consistent cylindrical profile. -->
+  <path d="M91 117h36c-4 25-4 51 0 78H91c-10-17-12-59 0-78Z" fill="#e8d4aa"/>
+  <path d="M91 120c-6 24-6 49 0 72" stroke="#a68f6f" stroke-width="2"/>
+  <path d="M88 128h9m-11 11h10m-11 12h10m-10 12h10m-9 12h10m-8 10h9" stroke-width="2"/>
+  <path d="M76 155h10" stroke-width="8"/>
+  <!-- Main gear is attached to the belly and lower wing root. -->
+  <path d="m154 194 27 35 53-39" stroke-width="5"/>
+  <circle cx="182" cy="229" r="19" fill="#203840"/><circle cx="182" cy="229" r="7" fill="#e8d6ad" stroke-width="2"/>
+  <path d="m533 162 10 24" stroke-width="4"/><circle cx="546" cy="191" r="8" fill="#203840"/><circle cx="546" cy="191" r="2.5" fill="#e8d6ad" stroke="none"/>
+  <!-- Lower and upper wing chords in the same side projection. -->
+  <path d="M165 173c20-5 64-7 111-5 9 0 17 4 22 8-14 5-51 8-108 9l-36-4Z" fill="#ecd9b0"/>
+  <path d="m169 178 112-3" stroke="#baa37e" stroke-width="1.5"/>
+  <path d="m185 90 22 81m59-81-12 79" stroke="#304f58" stroke-width="4"/>
+  <path d="m189 90 66 79m10-78-58 79" stroke="#547178" stroke-width="1.5"/>
+  <path d="m148 83 17-7c30-5 75-5 111-2 12 1 20 5 25 10-22 6-80 8-132 7Z" fill="#f3e3bd"/>
+  <path d="m166 84 117-3" stroke="#baa37e" stroke-width="1.5"/>
+  <!-- Horizontal tailplane is level with the rear fuselage. -->
+  <path d="M483 146c22-4 57-5 86-2 10 1 17 5 21 9-13 7-55 9-91 6Z" fill="#ecd9b0"/>
+  <path d="m503 152 65-1" stroke="#baa37e" stroke-width="1.5"/>
+  <path d="m481 134 11-1" stroke="#f2dfb7" stroke-width="4"/>
+  <!-- Only the propeller compresses in profile; the airframe stays rigid. -->
+  <ellipse cx="67" cy="155" rx="8" ry="59" fill="#203840" opacity=".1" stroke="none"/>
+  <g transform="translate(67 155)"><g class="prop-blades" fill="#203840" stroke="none"><path d="M-2-5c-10-21-15-43-9-51 7-7 16 4 17 17L3 0Z"/><path d="M2 5c10 21 15 43 9 51-7 7-16-4-17-17L-3 0Z"/></g></g>
+  <ellipse cx="67" cy="155" rx="9" ry="8" fill="#e8d6ad"/>
+ </g>
+</svg>
